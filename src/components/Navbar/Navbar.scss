@@ -1,0 +1,40 @@
+@import "../../assets/styles/variables";
+.navbar {
+  background-color: $dark-blue;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $white;
+    padding: .5rem 2rem;
+
+    ul {
+      font-size: 1.5rem;
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      li {
+        position: relative;
+        padding-bottom: 0.3rem;
+        &::after {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          height: 0.2rem;
+          background-color: $white;
+          content: "";
+          transition: all 0.3s;
+        }
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &__logo {
+    font-size: 2rem;
+  }
+}
