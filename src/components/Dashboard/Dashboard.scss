@@ -1,0 +1,46 @@
+@import "../../assets/styles/variables";
+
+.dashboard-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: $creamy-white;
+}
+.modal {
+  border: 1px solid $creamy-white;
+  background-color: $white;
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11);
+  &__card{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    width: 30rem;
+    justify-content: space-between;
+    padding: 2rem;
+    align-items: center;
+    h2{
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+    p{
+        font-size: 1.4rem;
+    }
+    button{
+        background-color: $light-red;
+        font-size: 1.4rem;
+        color: $white;
+        padding: .5rem 1rem;
+        border-radius: .4rem;
+        transition: all .3s;
+            border: 1px solid transparent;
+        &:hover{
+            background-color: $white;
+            color: $light-red;
+            border: 1px solid $light-red;
+        }
+    }
+  }
+}

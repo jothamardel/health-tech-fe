@@ -4,6 +4,7 @@ import './App.scss';
 import Navbar from './components/Navbar/Navbar';
 import Main from './components/Main/Main';
 import Dashboard from './components/Dashboard/Dashboard';
+import CreateProfile from './components/CreateProfile/CreateProfile';
 import PatientsList from './components/PatientsList/PatientsList'
 import NotFeelingWell from './components/NotFeelingWell/NotFeelingWell'
 import SignUp from './components/SignUp/SignUp'
@@ -17,7 +18,8 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Main/>}/>
-        <Route pat='/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/profile' element={<CreateProfile/>}/>
         <Route path="/activepatients" element={<PatientsList/>}/>
         <Route path="/pastpatients" element={<PatientsList/>}/>
         <Route path="/not-feeling-well" element={<NotFeelingWell/>}/>

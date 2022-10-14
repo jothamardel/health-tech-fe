@@ -4,6 +4,7 @@ body {
   box-sizing: border-box;
   font-size: 10px;
   font-family: "Raleway", sans-serif;
+  background-color: #f1faee;
 }
 a{
   text-decoration: none;
@@ -18,4 +19,5 @@ button{
   border: none;
   outline: none;
   background-color: transparent;
+  cursor: pointer;
 }
