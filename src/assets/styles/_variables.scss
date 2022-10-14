@@ -1,0 +1,23 @@
+$light-red: #E63946;
+$creamy-white: #f1faee;
+$light-sky-blue: #A8DADC;
+$light-blue: #457B9D;
+$dark-blue: #1D3557;
+$white: #ffffff;
+$black: #000000;
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+// mixins
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
