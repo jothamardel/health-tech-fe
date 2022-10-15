@@ -21,12 +21,12 @@ const SignUp = () => {
     }
     try {
       const response = await axios.post(`${process.env.REACT_APP_UNIFY_API_URL}auth/register`, data);
-      console.log(response);
+      // console.log(response);
       setMessage(response.data.message)
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error.response.data);
+      // console.log(error.response.data);
       setMessage(error.response.data.message);
     }
   }

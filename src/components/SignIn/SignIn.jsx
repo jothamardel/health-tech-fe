@@ -1,15 +1,48 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.scss'
+import axios from 'axios';
+
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+
+  async function httpLoginUser() {
+    if (!password || !email ) return alert("All fields are required!")
+
+    setLoading(true);
+    const data = {
+      email,
+      password
+    }
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_UNIFY_API_URL}auth/login`, data);
+      // console.log(response);
+      setMessage(response.data.message);
+      localStorage.setItem("user", JSON.stringify(response.data.data));
+      setLoading(false);
+      navigate('/dashboard');
+    } catch (error) {
+      setLoading(false);
+      // console.log(error.response.data);
+      setMessage(error.response.data.message);
+    }
+  }
+
+
+
   return (
     <div className="signin">
       <div className="signin__card">
         <div className="signin__card--header">
           <h1>Sign Up</h1>
         </div>
+        {message && <h2>{message}</h2>}
         <div className="signin__card--input">
           <label className="label">Email:</label>
           <input
@@ -29,8 +62,8 @@ const SignIn = () => {
           />
         </div>
         <div className="signin__card--footer">
+          <button disabled={loading} onClick={() => httpLoginUser()} className="signin__btn">Sign In</button>
           <button className="signup__btn"><Link to="/signup">Sign Up</Link></button>
-          <button className="signin__btn">Sign In</button>
         </div>
       </div>
     </div>
