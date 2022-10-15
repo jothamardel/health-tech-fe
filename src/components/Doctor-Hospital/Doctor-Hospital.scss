@@ -1,0 +1,51 @@
+@import "../../assets/styles/_variables.scss";
+
+
+
+.doc-container {
+  
+  h2 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .d-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+  
+    nav {
+       background-color: $white;
+  
+       ul {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
+        margin: 0;
+  
+        li {
+          list-style: none;
+          margin: 0 1rem;
+          cursor: pointer;
+          font-size: 1.5rem;
+          border-right: 1px solid $dark-blue;
+          padding: 1rem;
+          margin: 0;
+
+
+          &:hover {
+            background: $dark-blue;
+            color: $white;
+          }
+        }
+        .list {
+          border-right: none;
+        }
+
+       }
+    }
+  
+  
+  }
+}
