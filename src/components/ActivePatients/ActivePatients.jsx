@@ -1,9 +1,11 @@
 import "./ActivePatients.scss";
 import axios from "axios";
+import { useState } from "react";
 
 
 function ActivePatients(props) {
   const { patients, httpGetAllUnWell } = props;
+  const [search, setSearch] = useState("")
 
   function checkIfDoctorIsPermitted(arr = []) {
     if (!arr.length) {
@@ -39,16 +41,23 @@ function ActivePatients(props) {
     }
   }
 
+  function filteredPatients(arr = []) {
+    const newArr = [...arr];
+    const filteredResult = newArr.filter(item => item.full_name.toLowerCase().includes(search.toLowerCase()));
+
+    return filteredResult;
+  }
+
 
   return (
     <>
       <div className="active-patient-input">
-        <input placeholder="search..." type="search"/>
+        <input placeholder="search..." type="search" onChange={e => setSearch(e.target.value)}/>
       </div>
       <div className="active-patient-container">
         <div className="card">
           {
-            patients?.map(item => (
+            filteredPatients(patients)?.map(item => (
             <div className="card-patient" key={item._id}>
               <h1>{item.full_name}</h1>
               <div>
@@ -63,6 +72,11 @@ function ActivePatients(props) {
               </div>
             </div>
             ))
+          }
+
+          {
+            !filteredPatients(patients).length &&
+            <p style={{ textAlign: 'center', fontSize: '1rem'}}>No result found!</p>
           }
 
         </div>
