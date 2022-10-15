@@ -20,8 +20,8 @@ function ActivePatients() {
           <div className="card-patient">
             <h1>Sarah Doe</h1>
             <div>
-              <button>start diagnosis</button>
-              <button>discharge</button>
+              {/* <button>start diagnosis</button> */}
+              <button>Request access</button>
             </div>
           </div>
           <div className="card-patient">

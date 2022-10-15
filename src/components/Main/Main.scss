@@ -1,0 +1,24 @@
+@import "../../assets/styles/_variables.scss";
+
+
+
+.main-container {
+
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  div {
+
+    button {
+      background: $dark-blue;
+      color: $white;
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  }
+
+}
