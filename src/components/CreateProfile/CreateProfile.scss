@@ -60,3 +60,18 @@
         border: 1px solid $light-red;
     }
 }
+.add,.remove{
+    border: 1px solid transparent;
+    background-color: $light-red;
+    color: $white;
+    margin-left: 1rem;
+    font-size: 1rem;
+    border-radius: .3rem;
+    padding: .2rem .4rem;
+    transition: all .3s;
+    &:hover{
+        background-color: $white;
+        color: $light-red;
+        border: 1px solid $light-red;
+    }
+}

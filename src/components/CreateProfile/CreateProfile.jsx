@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./CreateProfile.scss";
 
+import { handleAdd, handleRemove, handleUpdateProperty } from "../../utils";
+
 const FullHistory = () => {
+  const [childhoodIllness, setChildhoodIllness] = useState([{ illness: "" }]);
+ const [adultIllness, setAdultIllness] = useState([{illness:''}])
   return (
     <div className="profile">
       <div className="profile__card">
@@ -14,11 +18,47 @@ const FullHistory = () => {
               1. Did you have any childhood illnesses.
             </label>
             <div className="inputFields">
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
+              {childhoodIllness.map((a, i) => (
+                <span key={i}>
+                  <input
+                    type="text"
+                    name="illness"
+                    onChange={(e) =>
+                      handleUpdateProperty(
+                        e,
+                        i,
+                        childhoodIllness,
+                        setChildhoodIllness
+                      )
+                    }
+                    placeholder="Any illness"
+                  />
+                  {childhoodIllness.length !== 1 && (
+                    <button
+                      className="remove"
+                      onClick={() =>
+                        handleRemove(i, childhoodIllness, setChildhoodIllness)
+                      }
+                    >
+                      Remove
+                    </button>
+                  )}
+                  {childhoodIllness.length - 1 === i && (
+                    <button
+                      className="add"
+                      onClick={() =>
+                        handleAdd(
+                          childhoodIllness,
+                          setChildhoodIllness,
+                          "illness"
+                        )
+                      }
+                    >
+                      Add More
+                    </button>
+                  )}
+                </span>
+              ))}
             </div>
           </div>
           <div className="inputs">
@@ -26,11 +66,47 @@ const FullHistory = () => {
               2. Did you have any adult illnesses.
             </label>
             <div className="inputFields">
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
-              <input type="text" placeholder="Any illness" />
+              {adultIllness.map((a, i) => (
+                <span key={i}>
+                  <input
+                    type="text"
+                    name="illness"
+                    onChange={(e) =>
+                      handleUpdateProperty(
+                        e,
+                        i,
+                        adultIllness,
+                        setAdultIllness
+                      )
+                    }
+                    placeholder="Any illness"
+                  />
+                  {adultIllness.length !== 1 && (
+                    <button
+                      className="remove"
+                      onClick={() =>
+                        handleRemove(i, adultIllness, setAdultIllness)
+                      }
+                    >
+                      Remove
+                    </button>
+                  )}
+                  {adultIllness.length - 1 === i && (
+                    <button
+                      className="add"
+                      onClick={() =>
+                        handleAdd(
+                          adultIllness,
+                          setAdultIllness,
+                          "illness"
+                        )
+                      }
+                    >
+                      Add More
+                    </button>
+                  )}
+                </span>
+              ))}
             </div>
           </div>
           <div className="inputs">
