@@ -39,6 +39,11 @@
             color: $white;
           }
         }
+        .selected {
+          background: $dark-blue;
+          color: $white;
+        }
+
         .list {
           border-right: none;
         }

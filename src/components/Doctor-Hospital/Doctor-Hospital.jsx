@@ -18,10 +18,10 @@ const DoctorHospital = () => {
       <div className='d-dashboard'>
         <nav className='nav-tab'> 
           <ul>
-            <li>Active Patients</li>
-            <li>Past Patients</li>
-            <li>Log Patients</li>
-            <li className='list'>Approvals</li>
+            <li className={`${(section === 'active_patients') && 'selected'}`} onClick={() => setSection('active_patients')}>Active Patients</li>
+            <li className={`${(section === 'past_patients') && 'selected'}`} onClick={() => setSection('past_patients')}>Past Patients</li>
+            <li className={`${(section === 'log_patients') && 'selected'}`} onClick={() => setSection('log_patients')}>Log Patients</li>
+            <li  className={`${(section === 'approvals') && 'selected'} list`}onClick={() => setSection('approvals')}>Approvals</li>
           </ul>
         </nav>
       </div>
