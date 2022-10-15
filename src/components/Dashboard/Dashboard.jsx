@@ -22,7 +22,7 @@ const Dashboard = () => {
   }, []);
 
 
-  if (user && !user.is_active) {
+  if (user && user.is_active) {
     return (
       <>
       <div className='doc-container'>
