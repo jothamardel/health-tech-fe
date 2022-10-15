@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, {  useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './SignUp.scss'
 const SignUp = () => {
   const [fullName, setFullName] = useState("");
@@ -9,6 +9,8 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   async function httpRegisterUser() {
     if (!password || !email || !fullName || !confirmPassword) return alert("All fields are required!")
@@ -30,6 +32,13 @@ const SignUp = () => {
       setMessage(error.response.data.message);
     }
   }
+
+  useEffect(() => {
+    const userDetails = localStorage.getItem("user");
+    if(userDetails) {
+      navigate('/dashboard')
+    }
+  }, []);
 
 
   return (

@@ -2,31 +2,15 @@
 
 
 
-.main-container {
+.button-container {
 
-  min-height: 80vh;
+  // min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $white;
 
 
   div {
-    text-align: center;
-
-    img {
-      width: 20rem;
-    }
-    
-    h1 {
-      font-size: 2rem;
-      margin: 0;
-    }
-
-    p {
-      font-size: 1.5rem;
-      margin: 0;
-    }
 
     button {
       background: $dark-blue;
