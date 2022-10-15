@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CreateProfile.scss";
+
 const FullHistory = () => {
   return (
     <div className="profile">
