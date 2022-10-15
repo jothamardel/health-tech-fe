@@ -1,4 +1,4 @@
-
+import './HelperStyle.scss'
 export function GeneralForm({
   fever,
   decreased_enery,

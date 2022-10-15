@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import "./NotFeelingWell.scss";
 import { useMultistepForm } from "../../utils";
 import { GeneralForm } from "../HelperComps/GeneralForm";
-import "./NotFeelingWell.scss";
 import { HeadForm } from "../HelperComps/HeadForm";
 import { EyeForm } from "../HelperComps/EyeForm";
 // import { EarForm } from "../HelperComps/EarForm";
 import "./NotFeelingWell.scss";
 import { NoseForm } from "../HelperComps/NoseForm";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const fullName= localStorage.getItem('user',"fullName")
-const userId= localStorage.getItem('user',"_id")
+const user_id= localStorage.getItem('user',"_id")
 const INITIAL_DATA = {
+  userId:user_id,
   full_name: fullName,
   age: 0,
   fever: "no",
@@ -30,6 +33,7 @@ const INITIAL_DATA = {
 };
 const NotFeelingWell = ({handleClose}) => {
   const [data, setData] = useState(INITIAL_DATA);
+  const navigate = useNavigate()
   function updateFields(fields) {
     setData((prev) => {
       return { ...prev, ...fields };
@@ -44,9 +48,20 @@ const NotFeelingWell = ({handleClose}) => {
     ]);
 
   function onSubmit(e) {
+    const config = {
+      method: "post",
+      url: "https://care-system.herokuapp.com/api/unwell",
+      headers: {},
+      data: data,
+    };
     e.preventDefault();
     if (!isLastStep) return next();
-    alert("Successful Account Creation");
+    axios(config).then(function(res){
+      console.log(JSON.stringify(res.data))
+    }).catch(function(err){
+      console.log(err)
+    })
+    navigate('/dashboard')
   }
   return (
     <div className="notFeelingWell">

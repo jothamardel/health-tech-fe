@@ -7,6 +7,8 @@ import {
   handleRemove,
   handleUpdateProperty,
 } from "../../utils";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FullHistory = () => {
   const [childhoodIllness, setChildhoodIllness] = useState([
@@ -33,6 +35,7 @@ const FullHistory = () => {
       inhalers: "no",
     },
   ]);
+  const navigate = useNavigate()
   function handleTrauma(e) {
     setTrauma([{ trauma: e.target.checked ? "yes" : "no" }]);
   }
@@ -43,7 +46,7 @@ const FullHistory = () => {
   const user_id = localStorage.getItem("user", "_id");
   const createProfileData = {
     userId: user_id,
-    data: [
+    medical_history: [
       {
         question: "1. Did you have any childhood illnesses",
         answers: [...childhoodIllness],
@@ -91,6 +94,22 @@ const FullHistory = () => {
       },
     ],
   };
+  function createProfile() {
+    const config = {
+      method: "post",
+      url: "https://care-system.herokuapp.com/api/create",
+      headers: {},
+      data: createProfileData,
+    };
+    axios(config)
+      .then(function (res) {
+        console.log('success');
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+      navigate('/dashboard')
+  }
   return (
     <div className="profile">
       <div className="profile__card">
@@ -529,7 +548,7 @@ const FullHistory = () => {
           </div>
         </div>
         <div className="profile__card--footer">
-          <button className="submit">Submit</button>
+          <button className="submit" onClick={createProfile}>Submit</button>
         </div>
       </div>
     </div>
