@@ -5,7 +5,7 @@ import { handleAdd, handleRemove, handleUpdateProperty } from "../../utils";
 
 const FullHistory = () => {
   const [childhoodIllness, setChildhoodIllness] = useState([{ illness: "" }]);
- const [adultIllness, setAdultIllness] = useState([{illness:''}])
+  const [adultIllness, setAdultIllness] = useState([{ illness: "" }]);
   return (
     <div className="profile">
       <div className="profile__card">
@@ -72,12 +72,7 @@ const FullHistory = () => {
                     type="text"
                     name="illness"
                     onChange={(e) =>
-                      handleUpdateProperty(
-                        e,
-                        i,
-                        adultIllness,
-                        setAdultIllness
-                      )
+                      handleUpdateProperty(e, i, adultIllness, setAdultIllness)
                     }
                     placeholder="Any illness"
                   />
@@ -95,11 +90,7 @@ const FullHistory = () => {
                     <button
                       className="add"
                       onClick={() =>
-                        handleAdd(
-                          adultIllness,
-                          setAdultIllness,
-                          "illness"
-                        )
+                        handleAdd(adultIllness, setAdultIllness, "illness")
                       }
                     >
                       Add More
