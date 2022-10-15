@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className='navbar__menu'>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/dashboard">Dashboard</Link></li>
+            {user && <li><Link to="/dashboard">Dashboard</Link></li>}
             <li><Link to="/doctor-hospital">Doctor/Hospital</Link></li>
             {!user && <li><Link to="/signup">Patient SignIn</Link></li>}
             {user && <li onClick={logout}><Link to="#">Logout</Link></li>}
