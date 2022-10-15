@@ -35,6 +35,7 @@ const FullHistory = () => {
     });
   }
   console.log(checkboxMedications);
+ 
   return (
     <div className="profile">
       <div className="profile__card">
