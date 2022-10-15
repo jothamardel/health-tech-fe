@@ -11,6 +11,8 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import DoctorHospital from './components/Doctor-Hospital/Doctor-Hospital'
 import Footer from './components/Footer/Footer'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function App() {
   return (

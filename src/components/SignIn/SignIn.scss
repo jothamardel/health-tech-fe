@@ -17,6 +17,13 @@
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.11);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.11);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.11);
+    h2 {
+      background:$light-sky-blue;
+      padding: 1rem;
+      width: 94%;
+      margin: 0;
+      text-align: center;
+    }
     &--header {
       height: 10rem;
       background-color: $dark-blue;
