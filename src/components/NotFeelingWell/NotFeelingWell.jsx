@@ -1,37 +1,32 @@
 import React, { useState } from "react";
 import { useMultistepForm } from "../../utils";
 import { GeneralForm } from "../HelperComps/GeneralForm";
-import { AddressForm } from "../HelperComps/AddressForm";
-import { UserForm } from "../HelperComps/UserForm";
 import "./NotFeelingWell.scss";
 import { HeadForm } from "../HelperComps/HeadForm";
 import { EyeForm } from "../HelperComps/EyeForm";
 // import { EarForm } from "../HelperComps/EarForm";
 import "./NotFeelingWell.scss";
 import { NoseForm } from "../HelperComps/NoseForm";
+const fullName= localStorage.getItem('user',"fullName")
+const userId= localStorage.getItem('user',"_id")
 const INITIAL_DATA = {
-  firstName: "",
-  lastName: "",
-  age: "",
-  street: "",
-  city: "",
-  state: "",
-  zip: "",
-  fever: "",
-  decreaseEnergy: "",
-  lossAppetite: "",
-  weightGain: "",
-  weightLoss: "",
-  headache: "",
-  headInjury: "",
-  visualChange: "",
-  crossed: "",
-  redness: "",
-  runnyNose: "",
-  nasalCongestion: "",
-  noseBleed: "",
-  diffHearing: "",
-  earPain: "",
+  full_name: fullName,
+  age: 0,
+  fever: "no",
+  decreased_energy: "no",
+  loss_appetite: "no",
+  weight_gain: "no",
+  weight_loss: "no",
+  headache: "no",
+  head_injury: "no",
+  visual_change: "no",
+  crossed_eyes: "no",
+  redness_eyes: "no",
+  runny_nose: "no",
+  nasal_congestion: "no",
+  nose_bleed: "no",
+  difficulty_hearing: "no",
+  ear_pain: "no",
 };
 const NotFeelingWell = ({handleClose}) => {
   const [data, setData] = useState(INITIAL_DATA);
@@ -42,8 +37,6 @@ const NotFeelingWell = ({handleClose}) => {
   }
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
-      <UserForm {...data} updateFields={updateFields} />,
-      <AddressForm {...data} updateFields={updateFields} />,
       <GeneralForm {...data} updateFields={updateFields} />,
       <HeadForm {...data} updateFields={updateFields} />,
       <EyeForm {...data} updateFields={updateFields} />,
@@ -55,7 +48,6 @@ const NotFeelingWell = ({handleClose}) => {
     if (!isLastStep) return next();
     alert("Successful Account Creation");
   }
-  console.log(data);
   return (
     <div className="notFeelingWell">
       <div className="notFeelingWell__card">

@@ -10,6 +10,27 @@ import {
 
 const FullHistory = () => {
   const [childhoodIllness, setChildhoodIllness] = useState([{ illness: "" }]);
+
+/*[
+  {childhoodIllness:
+    [
+      {illness:'name of the illness'}
+      {illness:'name of the illness'}
+      {illness:'name of the illness'}
+    ]
+  }
+  {adultIllness:
+    [
+      {illness:'name of the illness'}
+      {illness:'name of the illness'}
+      {illness:'name of the illness'}
+    ]
+  }
+]
+
+*/
+
+
   const [adultIllness, setAdultIllness] = useState([{ illness: "" }]);
   const [surgeries, setSurgeries] = useState([{ date: "", reason: "" }]);
   const [hospitalizations, setHospitalizations] = useState([

@@ -1,15 +1,28 @@
 
 export function GeneralForm({
   fever,
-  decreasedEnergy,
-  lossAppetitie,
-  weightGain,
-  weightLoss,
+  decreased_enery,
+  loss_appetitie,
+  weight_gain,
+  weight_loss,
+  age,
   updateFields,
 }) {
   return (
     <div className="general">
       <h2>General</h2>
+      <span>
+        <label>Age</label>
+        <input
+        required
+          type="number"
+          value={age}
+          onChange={(e) =>
+            updateFields({ fever: e.target.value })
+
+          }
+        />
+      </span>
       <span>
         <label>Fever</label>
         <input
@@ -24,9 +37,9 @@ export function GeneralForm({
         <label>Decreased/no energy</label>
         <input
           type="checkbox"
-          value={decreasedEnergy}
+          value={decreased_enery}
           onChange={(e) =>
-            updateFields({ decreasedEnergy: e.target.checked ? "yes" : "no" })
+            updateFields({ decreased_enery: e.target.checked ? "yes" : "no" })
           }
         />
       </span>
@@ -34,9 +47,9 @@ export function GeneralForm({
         <label>Loss of appetite</label>
         <input
           type="checkbox"
-          value={lossAppetitie}
+          value={loss_appetitie}
           onChange={(e) =>
-            updateFields({ lossAppetitie: e.target.value ? "yes" : "no" })
+            updateFields({ loss_appetitie: e.target.value ? "yes" : "no" })
           }
         />
       </span>
@@ -44,9 +57,9 @@ export function GeneralForm({
         <label>weight gain/loss</label>
         <input
           type="checkbox"
-          value={weightGain}
+          value={weight_gain}
           onChange={(e) =>
-            updateFields({ weightGain: e.target.checked ? "yes" : "no" })
+            updateFields({ weight_gain: e.target.checked ? "yes" : "no" })
           }
         />
       </span>
@@ -54,9 +67,9 @@ export function GeneralForm({
         <label>weight gain/loss</label>
         <input
           type="checkbox"
-          value={weightLoss}
+          value={weight_loss}
           onChange={(e) =>
-            updateFields({ weightLoss: e.target.checked ? "yes" : "no" })
+            updateFields({ weight_loss: e.target.checked ? "yes" : "no" })
           }
         />
       </span>

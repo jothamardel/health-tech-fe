@@ -1,5 +1,5 @@
 
-export function EyeForm({ visualChange, crossed, redness, updateFields }) {
+export function EyeForm({ visual_change, crossed_eyes, redness_eyes, updateFields }) {
   return (
     <div className="eyeform">
       <h2>Eye</h2>
@@ -7,24 +7,24 @@ export function EyeForm({ visualChange, crossed, redness, updateFields }) {
         <label>Any change in visual</label>
         <input
           type="checkbox"
-          value={visualChange}
-          onChange={(e) => updateFields({ visualChange: e.target.checked ? "yes" : "no" })}
+          value={visual_change}
+          onChange={(e) => updateFields({ visual_change: e.target.checked ? "yes" : "no" })}
         />
       </span>
       <span>
         <label>Do you feel your eyes may be crossed</label>
         <input
           type="checkbox"
-          value={crossed}
-          onChange={(e) => updateFields({ crossed: e.target.checked ? "yes" : "no" })}
+          value={crossed_eyes}
+          onChange={(e) => updateFields({ crossed_eyes: e.target.checked ? "yes" : "no" })}
         />
       </span>
       <span>
         <label>Redness</label>
         <input
           type="checkbox"
-          value={redness}
-          onChange={(e) => updateFields({ redness: e.target.checked ? "yes" : "no" })}
+          value={redness_eyes}
+          onChange={(e) => updateFields({ redness_eyes: e.target.checked ? "yes" : "no" })}
         />
       </span>
       

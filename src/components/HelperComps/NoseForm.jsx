@@ -1,5 +1,5 @@
 
-export function NoseForm({ runnyNose,nasalCongestion,noseBleed, updateFields }) {
+export function NoseForm({ runny_nose,nasal_congestion,nose_bleed, updateFields }) {
   return (
     <div className="noseform">
       <h2>Nose</h2>
@@ -7,24 +7,24 @@ export function NoseForm({ runnyNose,nasalCongestion,noseBleed, updateFields }) 
         <label>Running Nose</label>
         <input
           type="checkbox"
-          value={runnyNose}
-          onChange={(e) => updateFields({ runnyNose: e.target.checked ? "yes" : "no" })}
+          value={runny_nose}
+          onChange={(e) => updateFields({ runny_nose: e.target.checked ? "yes" : "no" })}
         />
       </span>
       <span>
         <label>Nasal Congestion</label>
         <input
           type="checkbox"
-          value={nasalCongestion}
-          onChange={(e) => updateFields({ nasalCongestion: e.target.checked ? "yes" : "no" })}
+          value={nasal_congestion}
+          onChange={(e) => updateFields({ nasal_congestion: e.target.checked ? "yes" : "no" })}
         />
       </span>
       <span>
         <label>Nose Bleed</label>
         <input
           type="checkbox"
-          value={noseBleed}
-          onChange={(e) => updateFields({ noseBleed: e.target.checked ? "yes" : "no" })}
+          value={nose_bleed}
+          onChange={(e) => updateFields({ nose_bleed: e.target.checked ? "yes" : "no" })}
         />
       </span>
      

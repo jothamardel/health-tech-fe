@@ -1,5 +1,5 @@
 
-export function HeadForm({ headache,headInjury,diffHearing,earPain, updateFields }) {
+export function HeadForm({ headache,head_injury,difficulty_hearing,ear_pain, updateFields }) {
   return (
     <div className="headform">
       <h2>Head & Ear</h2>
@@ -17,9 +17,9 @@ export function HeadForm({ headache,headInjury,diffHearing,earPain, updateFields
         <label>Any head injury</label>
         <input
           type="checkbox"
-          value={headInjury}
+          value={head_injury}
           onChange={(e) =>
-            updateFields({ headInjury: e.target.checked ? "yes" : "no" })
+            updateFields({ head_injury: e.target.checked ? "yes" : "no" })
           }
         />
       </span>
@@ -27,9 +27,9 @@ export function HeadForm({ headache,headInjury,diffHearing,earPain, updateFields
         <label>Difficulty Hearing</label>
         <input
           type="checkbox"
-          value={diffHearing}
+          value={difficulty_hearing}
           onChange={(e) =>
-            updateFields({ diffHearing: e.target.checked ? "yes" : "no" })
+            updateFields({ difficulty_hearing: e.target.checked ? "yes" : "no" })
           }
         />
       </span>
@@ -37,9 +37,9 @@ export function HeadForm({ headache,headInjury,diffHearing,earPain, updateFields
         <label>Ear Pain</label>
         <input
           type="checkbox"
-          value={earPain}
+          value={ear_pain}
           onChange={(e) =>
-            updateFields({ earPain: e.target.checked ? "yes" : "no" })
+            updateFields({ ear_pain: e.target.checked ? "yes" : "no" })
           }
         />
       </span>
