@@ -33,7 +33,7 @@ const INITIAL_DATA = {
   diffHearing: "",
   earPain: "",
 };
-const NotFeelingWell = () => {
+const NotFeelingWell = ({handleClose}) => {
   const [data, setData] = useState(INITIAL_DATA);
   function updateFields(fields) {
     setData((prev) => {
@@ -59,7 +59,9 @@ const NotFeelingWell = () => {
   return (
     <div className="notFeelingWell">
       <div className="notFeelingWell__card">
-        <h1 className="notFeelingWell__card--heading">Not Feeling Well?</h1>
+        <h1 className="notFeelingWell__card--heading">
+          Not Feeling Well? <div className="close" onClick={handleClose}>X</div>
+        </h1>
         <div className="notFeelingWell__card--form">
           <div className="notFeelingWell__card--question">
             <h2>
