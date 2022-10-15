@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import ActivePatients from '../ActivePatients/ActivePatients';
 import "./Doctor-Hospital.scss"
 
 const DoctorHospital = () => {
   const [section, setSection] = useState('active_patients');
 
   const showPage = {
-    active_patients: null,
+    active_patients: <ActivePatients />,
     past_patients: null,
     log_patients: null,
     approvals: null
