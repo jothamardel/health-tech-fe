@@ -8,7 +8,7 @@ const DoctorHospital = () => {
   const [patients, setPatients] = useState([]);
 
   const showPage = {
-    active_patients: <ActivePatients patients={patients}/>,
+    active_patients: <ActivePatients patients={patients} httpGetAllUnWell={httpGetAllUnWell}/>,
     past_patients: null,
     log_patients: null,
     approvals: null
@@ -36,9 +36,9 @@ const DoctorHospital = () => {
         <nav className='nav-tab'> 
           <ul>
             <li className={`${(section === 'active_patients') && 'selected'}`} onClick={() => setSection('active_patients')}>Active Patients</li>
-            <li className={`${(section === 'past_patients') && 'selected'}`} onClick={() => setSection('past_patients')}>Past Patients</li>
-            <li className={`${(section === 'log_patients') && 'selected'}`} onClick={() => setSection('log_patients')}>Log Patients</li>
-            <li  className={`${(section === 'approvals') && 'selected'} list`}onClick={() => setSection('approvals')}>Approvals</li>
+            <li className={`${(section === 'past_patients') && 'selected'} list`} onClick={() => setSection('past_patients')}>Discharged Patients</li>
+            {/* <li className={`${(section === 'log_patients') && 'selected'}`} onClick={() => setSection('log_patients')}>Log Patients</li> */}
+            {/* <li  className={`${(section === 'approvals') && 'selected'} list`}onClick={() => setSection('approvals')}>Approvals</li> */}
           </ul>
         </nav>
       </div>
