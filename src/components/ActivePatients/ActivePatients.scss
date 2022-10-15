@@ -2,6 +2,19 @@
 
 
 
+
+.active-patient-input {
+  text-align: center;
+
+  input {
+    padding: 1.3rem;
+    width: 30rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+  }
+}
+
 .active-patient-container {
   display: flex;
   justify-content: center;

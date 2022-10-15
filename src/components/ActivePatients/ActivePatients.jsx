@@ -5,6 +5,9 @@ function ActivePatients() {
   
   return (
     <>
+      <div className="active-patient-input">
+        <input placeholder="search..." type="search"/>
+      </div>
       <div className="active-patient-container">
         <div className="card">
           <div className="card-patient">
