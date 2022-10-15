@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.scss'
 import axios from 'axios';
@@ -26,6 +26,7 @@ const SignIn = () => {
       setMessage(response.data.message);
       localStorage.setItem("user", JSON.stringify(response.data.data));
       setLoading(false);
+      window.location.reload();
       navigate('/dashboard');
     } catch (error) {
       setLoading(false);
@@ -35,12 +36,20 @@ const SignIn = () => {
   }
 
 
+  useEffect(() => {
+    const userDetails = localStorage.getItem("user");
+    if(userDetails) {
+      navigate('/dashboard');
+    }
+  }, []);
+
+
 
   return (
     <div className="signin">
       <div className="signin__card">
         <div className="signin__card--header">
-          <h1>Sign Up</h1>
+          <h1>Sign In</h1>
         </div>
         {message && <h2>{message}</h2>}
         <div className="signin__card--input">
