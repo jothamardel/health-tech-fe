@@ -1,8 +1,8 @@
 import "./ActivePatients.scss";
 
 
-function ActivePatients() {
-  
+function ActivePatients(props) {
+  const { patients } = props;
   return (
     <>
       <div className="active-patient-input">
@@ -10,41 +10,18 @@ function ActivePatients() {
       </div>
       <div className="active-patient-container">
         <div className="card">
-          <div className="card-patient">
-            <h1>John Doe</h1>
-            <div>
-              <button>start diagnosis</button>
-              <button>discharge</button>
+          {
+            patients?.map(item => (
+            <div className="card-patient" key={item._id}>
+              <h1>{item.full_name}</h1>
+              <div>
+                <button>start diagnosis</button>
+                <button>discharge</button>
+              </div>
             </div>
-          </div>
-          <div className="card-patient">
-            <h1>Sarah Doe</h1>
-            <div>
-              {/* <button>start diagnosis</button> */}
-              <button>Request access</button>
-            </div>
-          </div>
-          <div className="card-patient">
-            <h1>Peter Doe</h1>
-            <div>
-              <button>start diagnosis</button>
-              <button>discharge</button>
-            </div>
-          </div>
-          <div className="card-patient">
-            <h1>Daniel Doe</h1>
-            <div>
-              <button>start diagnosis</button>
-              <button>discharge</button>
-            </div>
-          </div>
-          <div className="card-patient">
-            <h1>Esther Doe</h1>
-            <div>
-              <button>start diagnosis</button>
-              <button>discharge</button>
-            </div>
-          </div>
+            ))
+          }
+
         </div>
       </div>
     </>

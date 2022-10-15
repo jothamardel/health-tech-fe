@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ActivePatients from '../ActivePatients/ActivePatients';
 import "./Doctor-Hospital.scss"
+import axios from 'axios';
 
 const DoctorHospital = () => {
   const [section, setSection] = useState('active_patients');
+  const [patients, setPatients] = useState([]);
 
   const showPage = {
-    active_patients: <ActivePatients />,
+    active_patients: <ActivePatients patients={patients}/>,
     past_patients: null,
     log_patients: null,
     approvals: null
   }
+
+  async function httpGetAllUnWell() {
+   
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_UNIFY_API_URL}api/all-unwell`);
+      setPatients(response.data.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
+
+  useEffect(() => {
+    httpGetAllUnWell();
+  }, [])
 
 
   return (
