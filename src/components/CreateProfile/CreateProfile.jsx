@@ -9,54 +9,89 @@ import {
 } from "../../utils";
 
 const FullHistory = () => {
-  const [childhoodIllness, setChildhoodIllness] = useState([{ illness: "" }]);
-
-/*[
-  {childhoodIllness:
-    [
-      {illness:'name of the illness'}
-      {illness:'name of the illness'}
-      {illness:'name of the illness'}
-    ]
-  }
-  {adultIllness:
-    [
-      {illness:'name of the illness'}
-      {illness:'name of the illness'}
-      {illness:'name of the illness'}
-    ]
-  }
-]
-
-*/
-
-
-  const [adultIllness, setAdultIllness] = useState([{ illness: "" }]);
-  const [surgeries, setSurgeries] = useState([{ date: "", reason: "" }]);
-  const [hospitalizations, setHospitalizations] = useState([
-    { date: "", reason: "" },
+  const [childhoodIllness, setChildhoodIllness] = useState([
+    { illness: "none" },
   ]);
-  const [injuries, setInjuries] = useState([{ dat: "", reason: "" }]);
-  const [trauma, setTrauma] = useState(false);
-  const [medicAllergies, setMedicAllergies] = useState([{ allergy: "" }]);
-  const [otherAllergies, setOtherAllergies] = useState([{ allergy: "" }]);
-  const [familyIllness, setFamilyIllness] = useState([{ illness: "" }]);
-  const [checkboxMedications, setCheckboxMedications] = useState({});
+
+  const [adultIllness, setAdultIllness] = useState([{ illness: "none" }]);
+  const [surgeries, setSurgeries] = useState([
+    { date: "none", reason: "none" },
+  ]);
+  const [hospitalizations, setHospitalizations] = useState([
+    { date: "none", reason: "none" },
+  ]);
+  const [injuries, setInjuries] = useState([{ date: "no", reason: "none" }]);
+  const [trauma, setTrauma] = useState([{ trauma: "no" }]);
+  const [medicAllergies, setMedicAllergies] = useState([{ allergy: "none" }]);
+  const [otherAllergies, setOtherAllergies] = useState([{ allergy: "none" }]);
+  const [familyIllness, setFamilyIllness] = useState([{ illness: "none" }]);
+  const [checkboxMedications, setCheckboxMedications] = useState([
+    {
+      birth_control_pills: "no",
+      creams_ointments: "no",
+      eye_ear_medications: "no",
+      inhalers: "no",
+    },
+  ]);
   function handleTrauma(e) {
-    setTrauma(e.target.checked);
+    setTrauma([{ trauma: e.target.checked ? "yes" : "no" }]);
   }
   function handleCheckboxes(e) {
-    const { name, value } = e.target;
-
-    setCheckboxMedications((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
+    const { name } = e.target;
+    setCheckboxMedications((prevData) => [{ ...prevData[0], [name]: "yes" }]);
   }
-  console.log(checkboxMedications);
- 
+  const user_id = localStorage.getItem("user", "_id");
+  const createProfileData = {
+    userId: user_id,
+    data: [
+      {
+        question: "1. Did you have any childhood illnesses",
+        answers: [...childhoodIllness],
+      },
+      {
+        question: "2. Did you have any adult illnesses.",
+        answers: [...adultIllness],
+      },
+      {
+        question:
+          "3. Did you have ever have any surgeries. Please enter all of them",
+        answers: [...surgeries],
+      },
+      {
+        question: "4. Were you ever hospitalized.",
+        answers: [...hospitalizations],
+      },
+      {
+        question: "5. Did you have any injuries.",
+        answers: [...injuries],
+      },
+      {
+        question: "6. Did you ever experienced trauma.",
+        answers: [...trauma],
+      },
+      {
+        question:
+          "7. Can you provide info about any medication allergies you may have",
+        answers: [...medicAllergies],
+      },
+      {
+        question:
+          "8. Do you have any seasonal or environmental allergies or food allergies",
+        answers: [...otherAllergies],
+      },
+      {
+        question:
+          "9. Did you ever have any of these medications if yes please specify which one.",
+        answers: [...checkboxMedications],
+      },
+      {
+        question:
+          "10. Are there any diseased or medical problems that run in your family?",
+        answers: [...familyIllness],
+      },
+    ],
+  };
+  console.log(createProfileData);
   return (
     <div className="profile">
       <div className="profile__card">
@@ -412,32 +447,26 @@ const FullHistory = () => {
             <div className="inputFields">
               <span>
                 <input
-                  name="bcp"
+                  name="birth_control_pills"
                   type="checkbox"
                   id="birth-control"
-                  value="Birth control pills"
-                  placeholder="Any medications"
                   onChange={(e) => handleCheckboxes(e)}
                 />
                 <label htmlFor="birth-control">Birth control pills</label>
               </span>
               <span>
                 <input
-                  name="co"
+                  name="creams_ointments"
                   type="checkbox"
                   id="creams"
-                  value="Creams ointments"
-                  placeholder="Any medications"
                   onChange={(e) => handleCheckboxes(e)}
                 />
                 <label htmlFor="creams">Creams/Ointments</label>
               </span>
               <span>
                 <input
-                  name="eem"
+                  name="eye_ear_medications"
                   type="checkbox"
-                  value="Eye Ear Medications"
-                  placeholder="Any medications"
                   id="eye-ear"
                   onChange={(e) => handleCheckboxes(e)}
                 />
@@ -445,10 +474,8 @@ const FullHistory = () => {
               </span>
               <span>
                 <input
-                  name="in"
+                  name="inhalers"
                   type="checkbox"
-                  value="Inhalers"
-                  placeholder="Any medications"
                   id="inhalers"
                   onChange={(e) => handleCheckboxes(e)}
                 />
