@@ -3,8 +3,8 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      <p>Front End made by: @kaushalluffa</p>
-      <p>Backend Team: @kaushalluffa, @kaushalluffa, @kaushalluffa</p>
+      <p>Front End made by: @kaushalluffa, @jothamardel</p>
+      <p>Backend Team: @mbragi, @HamzaZahid172, @jothamardel</p>
     </div>
   );
 };
