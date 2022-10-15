@@ -1,0 +1,59 @@
+@import "../../assets/styles/variables";
+
+.requests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: $white;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.11);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.11);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.11);
+    text-align: center;
+    p{
+        font-size: 1.4rem;
+        max-width: 80%;
+        margin: 0 auto;
+        &:nth-child(3){
+            color: #52b69a;
+        }
+        &:nth-child(4){
+            color: $light-red;
+        }
+    }
+    &--cta{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.5rem;
+        gap: 1rem;
+        .approve,.reject{
+            padding: .5rem 1rem;
+            font-size: 1.3rem;
+            border: 1px solid transparent;
+            color: $white;
+            transition: all .3s;
+        }
+        .approve{
+            background-color: #52b69a;
+            &:hover{
+                border: 1px solid #52b69a;
+                color: #52b69a;
+                background-color: $white;
+            }
+        }
+        .reject{
+            background-color: $light-red;
+            &:hover{
+                border: 1px solid $light-red;
+                color: $light-red;
+                background-color: $white;
+            }
+        }
+    }
+  }
+}

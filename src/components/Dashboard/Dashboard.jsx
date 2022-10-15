@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.scss";
 import Button from "../Button/Button";
+import Requests from "../Requests/Requests";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -12,7 +13,7 @@ const Dashboard = () => {
     home: <Button />,
     past_patients: null,
     log_patients: null,
-    approvals: null
+    approvals: <Requests/>
   }
 
 

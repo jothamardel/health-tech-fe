@@ -18,7 +18,7 @@ export function GeneralForm({
           type="number"
           value={age}
           onChange={(e) =>
-            updateFields({ fever: e.target.value })
+            updateFields({ age: e.target.value })
 
           }
         />

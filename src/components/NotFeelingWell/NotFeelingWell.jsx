@@ -4,15 +4,17 @@ import { useMultistepForm } from "../../utils";
 import { GeneralForm } from "../HelperComps/GeneralForm";
 import { HeadForm } from "../HelperComps/HeadForm";
 import { EyeForm } from "../HelperComps/EyeForm";
-// import { EarForm } from "../HelperComps/EarForm";
 import "./NotFeelingWell.scss";
 import { NoseForm } from "../HelperComps/NoseForm";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const fullName= localStorage.getItem('user',"fullName")
-const user_id= localStorage.getItem('user',"_id")
+
+const {fullName,_id} = JSON.parse(localStorage.getItem("user"));
+
+
+
 const INITIAL_DATA = {
-  userId:user_id,
+  userId:_id,
   full_name: fullName,
   age: 0,
   fever: "no",
@@ -63,6 +65,7 @@ const NotFeelingWell = ({handleClose}) => {
     })
     navigate('/dashboard')
   }
+  console.log(data)
   return (
     <div className="notFeelingWell">
       <div className="notFeelingWell__card">

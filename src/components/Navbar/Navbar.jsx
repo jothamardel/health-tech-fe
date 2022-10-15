@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <nav>
-        <div className='navbar__logo'>Unify</div>
+        <div className='navbar__logo' style={{cursor:'pointer'}}><Link to="/">Unify</Link></div>
         <div className='navbar__menu'>
           <ul>
             <li><Link to="/">Home</Link></li>
