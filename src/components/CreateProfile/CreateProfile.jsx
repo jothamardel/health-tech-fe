@@ -91,7 +91,6 @@ const FullHistory = () => {
       },
     ],
   };
-  console.log(createProfileData);
   return (
     <div className="profile">
       <div className="profile__card">
