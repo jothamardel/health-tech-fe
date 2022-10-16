@@ -23,20 +23,27 @@ const Requests = () => {
         console.log(error);
       });
   }, [_id]);
-  function rejectRequest() {
-    const config = {
-      method: "post",
-      url: `https://care-system.herokuapp.com/api/unwell`,
-      headers: {},
-      data: { ...fetchedData, permissions: [] },
-    };
-    axios(config)
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+
+  function rejectRequest(doctor) {
+    console.log(doctor)
+    const newArr = [...permissions];
+    const doc = newArr[0].permissions.filter(item => item.id !== doctor.id)
+    newArr[0].permissions = doc;
+    console.log(newArr);
+    httpUpdatePatientPermissions(newArr[0]);
+    // const config = {
+    //   method: "post",
+    //   url: `https://care-system.herokuapp.com/api/unwell`,
+    //   headers: {},
+    //   data: { ...fetchedData, permissions: [] },
+    // };
+    // axios(config)
+    //   .then(function (res) {
+    //     console.log(res);
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err);
+    //   });
   }
   function approveRequest(doctor) {
     console.log(doctor)
@@ -126,7 +133,7 @@ const Requests = () => {
               <button className="approve" onClick={() => approveRequest(item)}>
                 Approve
               </button>
-              <button className="reject" onClick={rejectRequest}>
+              <button className="reject" onClick={() => rejectRequest(item)}>
                 Reject
               </button>
             </div>
