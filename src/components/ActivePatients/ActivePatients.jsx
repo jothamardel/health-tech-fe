@@ -15,14 +15,25 @@ function ActivePatients(props) {
     const newArr = [...arr];
     const findDoc = newArr.find(item => item.id === _id)
 
+    console.log(findDoc)
     if (!findDoc) {
       return "Request access"
     }
 
+    console.log(findDoc)
     if (findDoc && !findDoc.allowed) {
       return "Pending approval"
     }
+    console.log(findDoc)
     return findDoc.allowed;
+  }
+  function checkIfDoctor(arr = []) {
+  
+    const { _id } = JSON.parse(localStorage.getItem('user'));
+    const newArr = [...arr];
+    const findDoc = newArr.find(item => item.id === _id)
+    if(!findDoc) return false;
+    return true;
   }
 
   async function httpRequestAccess(user) {
@@ -60,6 +71,8 @@ function ActivePatients(props) {
   }
 
 
+
+
   return (
     <>
       <div className="active-patient-input">
@@ -74,7 +87,7 @@ function ActivePatients(props) {
               <div>
                 <button onClick={() => httpRequestAccess(item)}>{checkIfDoctorIsPermitted(item.permissions)}</button>
                 {
-                  (checkIfDoctorIsPermitted() === true) &&
+                  (checkIfDoctorIsPermitted(item.permissions) === true) &&
                   <>
                     <button>start diagnosis</button>
                     <button onClick={() => httpDischargePatient(item)}>discharge</button>
