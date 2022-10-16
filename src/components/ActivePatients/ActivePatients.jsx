@@ -85,7 +85,10 @@ function ActivePatients(props) {
             <div className="card-patient" key={item._id}>
               <h1>{item.full_name}</h1>
               <div>
+                {
+                  !(checkIfDoctorIsPermitted(item.permissions) === true) &&
                 <button onClick={() => httpRequestAccess(item)}>{checkIfDoctorIsPermitted(item.permissions)}</button>
+                }
                 {
                   (checkIfDoctorIsPermitted(item.permissions) === true) &&
                   <>
