@@ -14,6 +14,9 @@ const Navbar = () => {
 
   useEffect(() => {
     const userDetails = localStorage.getItem("user");
+    if(userDetails ===undefined){
+      return
+    }
     setuser(JSON.parse(userDetails));
   }, []);
   return (

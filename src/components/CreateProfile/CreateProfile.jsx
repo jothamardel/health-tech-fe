@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CreateProfile.scss";
 
 import {
@@ -11,6 +11,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const FullHistory = () => {
+  
   const [childhoodIllness, setChildhoodIllness] = useState([
     { illness: "none" },
   ]);
@@ -104,9 +105,9 @@ const FullHistory = () => {
       data: createProfileData,
     };
     axios(config)
-      .then(async function (res) {
+      .then(function (res) {
         console.log(res)
-       await localStorage.setItem("user", JSON.stringify(res.data.userDetails))
+       localStorage.setItem("user", JSON.stringify(res.data.userDetails))
        window.location.reload()
       })
       .catch(function (err) {
@@ -115,6 +116,8 @@ const FullHistory = () => {
       ;
       navigate('/dashboard')
   }
+ 
+ 
   return (
     <div className="profile">
       <div className="profile__card">

@@ -59,7 +59,7 @@ const NotFeelingWell = ({ handleClose }) => {
       method: "post",
       url: "https://care-system.herokuapp.com/api/unwell",
       headers: {},
-      data: {...data, fullName, userId:_id},
+      data: {...data, full_name:fullName, userId:_id},
     };
     if (!isLastStep) return next();
     axios(config)
