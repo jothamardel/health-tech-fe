@@ -1,9 +1,9 @@
-import "./ActivePatients.scss";
+import "./DischargedPatients.scss";
 import axios from "axios";
 import { useState } from "react";
 
 
-function ActivePatients(props) {
+function DischargedPatients(props) {
   const { patients, httpGetAllUnWell } = props;
   const [search, setSearch] = useState("")
 
@@ -72,17 +72,18 @@ function ActivePatients(props) {
             <div className="card-patient" key={item._id}>
               <h1>{item.full_name}</h1>
               <div>
-                <button onClick={() => httpRequestAccess(item)}>{checkIfDoctorIsPermitted(item.permissions)}</button>
+                <p style={{ fontSize: '1rem'}}>Discharged</p>
+                {/* <button onClick={() => httpRequestAccess(item)}>{checkIfDoctorIsPermitted(item.permissions)}</button>
                 {
                   (checkIfDoctorIsPermitted() === true) &&
                   <>
                     <button>start diagnosis</button>
                     <button onClick={() => httpDischargePatient(item)}>discharge</button>
                   </>
-                }
+                } */}
               </div>
             </div>
-            )).reverse()
+            ))
           }
 
           {
@@ -97,4 +98,4 @@ function ActivePatients(props) {
 }
 
 
-export default ActivePatients;
+export default DischargedPatients;

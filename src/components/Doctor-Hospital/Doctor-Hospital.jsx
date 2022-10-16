@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ActivePatients from '../ActivePatients/ActivePatients';
+import DischargedPatients from '../DischargedPatients/DischargedPatients';
 import "./Doctor-Hospital.scss"
 import axios from 'axios';
 
@@ -9,7 +10,7 @@ const DoctorHospital = () => {
 
   const showPage = {
     active_patients: <ActivePatients patients={patients} httpGetAllUnWell={httpGetAllUnWell}/>,
-    past_patients: null,
+    past_patients: <DischargedPatients />,
     log_patients: null,
     approvals: null
   }
@@ -23,6 +24,7 @@ const DoctorHospital = () => {
       console.log(error.response.data);
     }
   }
+ 
 
   useEffect(() => {
     httpGetAllUnWell();
