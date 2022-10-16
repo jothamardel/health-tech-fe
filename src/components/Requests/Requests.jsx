@@ -95,8 +95,6 @@ const Requests = () => {
    
     try {
       const response = await axios.post(`${process.env.REACT_APP_UNIFY_API_URL}api/unwell`, data);
-      console.log(response.data.data)
-      // setPermissions(response.data.data)
       httpGetPatientPermissions();
     } catch (error) {
       console.log(error.response.data);
