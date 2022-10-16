@@ -82,7 +82,7 @@ function ActivePatients(props) {
                 }
               </div>
             </div>
-            ))
+            )).reverse()
           }
 
           {
