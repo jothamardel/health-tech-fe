@@ -43,9 +43,10 @@ const FullHistory = () => {
     const { name } = e.target;
     setCheckboxMedications((prevData) => [{ ...prevData[0], [name]: "yes" }]);
   }
-  const user_id = localStorage.getItem("user", "_id");
+  const {_id} = JSON.parse(localStorage.getItem("user"))
+
   const createProfileData = {
-    userId: user_id,
+    userId: _id,
     medical_history: [
       {
         question: "1. Did you have any childhood illnesses",
@@ -95,6 +96,7 @@ const FullHistory = () => {
     ],
   };
   function createProfile() {
+
     const config = {
       method: "post",
       url: "https://care-system.herokuapp.com/api/create",
@@ -102,12 +104,15 @@ const FullHistory = () => {
       data: createProfileData,
     };
     axios(config)
-      .then(function (res) {
-        console.log('success');
+      .then(async function (res) {
+        console.log(res)
+       await localStorage.setItem("user", JSON.stringify(res.data.userDetails))
+       window.location.reload()
       })
       .catch(function (err) {
         console.log(err);
       });
+      ;
       navigate('/dashboard')
   }
   return (

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Dashboard.scss";
 import Button from "../Button/Button";
 import Requests from "../Requests/Requests";
+import NotFeelingWell from "../NotFeelingWell/NotFeelingWell";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -10,7 +11,7 @@ const Dashboard = () => {
   const isPatient = false;
 
   const showPage = {
-    home: <Button />,
+    home: <Button onClick={handleNotFeelingWell}  />,
     past_patients: null,
     log_patients: null,
     approvals: <Requests/>
@@ -19,30 +20,63 @@ const Dashboard = () => {
 
   useEffect(() => {
     const userDetails = localStorage.getItem("user");
+    if(!userDetails){
+      return;
+    }
     setUser(JSON.parse(userDetails));
   }, []);
 
-
+const [notFeelingWell, setNotFeelingWell] = useState(false);
+function handleNotFeelingWell() {
+  setNotFeelingWell(true);
+}
+function handleClose() {
+  setNotFeelingWell(false);
+}
   if (user && user.is_active) {
     return (
       <>
-      <div className='doc-container'>
-      <h2>Patient Dashboard</h2>
-      <div className='d-dashboard'>
-        <nav className='nav-tab'> 
-          <ul>
-            <li className={`${(section === 'home') && 'selected'}`} onClick={() => setSection('home')}>Home</li>
-            <li className={`${(section === 'past_patients') && 'selected'}`} onClick={() => setSection('past_patients')}>Hospitals</li>
-            <li className={`${(section === 'log_patients') && 'selected'}`} onClick={() => setSection('log_patients')}>Doctors</li>
-            <li  className={`${(section === 'approvals') && 'selected'} list`}onClick={() => setSection('approvals')}>Approvals</li>
-          </ul>
-        </nav>
-      </div>
-      {showPage[section]}
-    </div>
-      
+        <div className="doc-container">
+          <h2>Patient Dashboard</h2>
+          <div className="d-dashboard">
+            <nav className="nav-tab">
+              <ul>
+                <li
+                  className={`${section === "home" && "selected"}`}
+                  onClick={() => setSection("home")}
+                >
+                  Home
+                </li>
+                <li
+                  className={`${section === "past_patients" && "selected"}`}
+                  onClick={() => setSection("past_patients")}
+                >
+                  Hospitals
+                </li>
+                <li
+                  className={`${section === "log_patients" && "selected"}`}
+                  onClick={() => setSection("log_patients")}
+                >
+                  Doctors
+                </li>
+                <li
+                  className={`${section === "approvals" && "selected"} list`}
+                  onClick={() => setSection("approvals")}
+                >
+                  Approvals
+                </li>
+              </ul>
+            </nav>
+          </div>
+          {showPage[section]}
+        </div>
+        {notFeelingWell && (
+          <span className="popup">
+            <NotFeelingWell handleClose={handleClose} />
+          </span>
+        )}
       </>
-    )
+    );
   }
 
   return (
