@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <p>Front End made by: @kaushalluffa, @jothamardel</p>
-      <p>Backend Team: @mbragi, @HamzaZahid172, @jothamardel</p>
+      <p>Backend Team: @mbragi, @jothamardel</p>
     </div>
   );
 };
