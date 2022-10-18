@@ -5,7 +5,7 @@ import "./Requests.scss";
 
 const Requests = () => {
   const { _id } = JSON.parse(localStorage.getItem("user"));
-  const [fetchedData, setFetchedData] = useState(null);
+  const [fetchedData, setFetchedData] = useState({});
   useEffect(() => {
     const config = {
       method: "get",

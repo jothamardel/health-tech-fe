@@ -106,7 +106,6 @@ const FullHistory = () => {
     };
     axios(config)
       .then(function (res) {
-        console.log(res)
        localStorage.setItem("user", JSON.stringify(res.data.userDetails))
        window.location.reload()
       })
